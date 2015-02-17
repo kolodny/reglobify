@@ -8,13 +8,10 @@ module.exports = function (file) {
     src = src.replace(/var reglob = require\((['"])reglob\1\)/, '');
     var transformed = src.replace(/reglob\(([^\)]+)\)/, function(all, globber) {
       globber = globber.replace(/^__dirname/, "'" + path.dirname(file) + "'");
-      console.log(globber);
       try {
         globber = eval(globber);
       } catch (e) {}
-      console.log(globber);
       var matches = glob.sync(globber);
-      console.log(matches)
       if (!matches.length) {
         return '';
       } else {
