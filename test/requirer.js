@@ -1,3 +1,5 @@
 var reglob = require('reglob');
 
-reglob(__dirname + '/placeholder*.json');
+console.log(
+  JSON.stringify(reglob(__dirname + '/placeholder*.json'))
+);
